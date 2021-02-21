@@ -26,7 +26,7 @@ class Safe
 
   # close safe, change state to  Closed (False)
   def close()
-    @opened = true
+    @opened = false 
   end
 
   # set new password for safe
