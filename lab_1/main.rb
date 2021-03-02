@@ -37,7 +37,6 @@ class Safe
       @password = new_password
     else
       raise StandardError.new("cant change password : safe is not opened")
-
     end
   end
 
