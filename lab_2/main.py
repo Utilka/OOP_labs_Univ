@@ -14,6 +14,16 @@ class PassengerCar(Car):
         self.passenger_count = passenger_count
         self.railroads_conductor = railroads_conductor
         self.ticket_price = ticket_price
+        self.passenger_list = []
+
+    def add_passenger(self, passenger):
+        if self.passenger_list.length() >= self.passenger_count:
+            raise Exception("PassengerCar is full")
+        else:
+            self.passenger_list.append(passenger)
+
+    def remove_passenger(self, passenger):
+        self.passenger_list.remove(passenger)
 
 
 class CoupeCar(PassengerCar):
@@ -22,10 +32,10 @@ class CoupeCar(PassengerCar):
         PassengerCar.__init__(self, 100, 120, 360, 6 * 360, 40, railroads_conductor, 50)
 
 
-class EconomyCar(PassengerCar):
+class RestaurantCar(PassengerCar):
 
     def __init__(self, railroads_conductor):
-        PassengerCar.__init__(self, 100, 60, 360, 6 * 360, 100, railroads_conductor, 20)
+        pass
 
 
 class FreightCar(Car):
@@ -69,7 +79,8 @@ class Train:
 
 if __name__ == '__main__':
     conductors = [RailroadsConductor("Kevin"), RailroadsConductor("Melanie")]
-    cars = [CoupeCar(conductors[0]), CoupeCar(conductors[1]), EconomyCar(conductors[1]), EconomyCar(conductors[1]),
+    cars = [CoupeCar(conductors[0]), CoupeCar(conductors[1]), RestaurantCar(conductors[1]),
+            RestaurantCar(conductors[1]),
             FreightCar(100, 60, 360, 6 * 360, 1000)]
     train = Train("Big Alice", "WHT", cars)
     train.depart()
